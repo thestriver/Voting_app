@@ -1,9 +1,12 @@
 const Mongodb = require('mongodb')
 
-const uri = 'mongodb://localhost:/voting-platform'
+const uri = 'mongodb://localhost/voting-platform'
 
 module.exports = () => {
-    const client = new Mongodb.MongoClient(uri)
+    const client = new Mongodb.MongoClient(uri, {
+        useUnifiedTopology: true
+    }
+        )
 
     return client.connect() //to establish a connection and return a promise
 }
